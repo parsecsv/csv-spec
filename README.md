@@ -37,6 +37,20 @@ character used in any given input CSV-like formatted file/data.
    their libraries.
 
 
+## Terminology
+
+- **Field** — A singular String value within a row.
+- **Row** (or **Record**) — A collection of fields.
+- **Column** — Fields from multiple rows at the same offset. For example the
+  second column would be a list of the second field from every row.
+- **Delimiter** — The character used to separate fields withing a
+  row. Commonly this will be a comma (`,`), but semi-colons (`;`) or tabs
+  (`\t`) are two other popular delimiter characters.
+- **Header** — The first row is often used to contain the column names for all
+  remaining rows. Header names would be used as key names during when CSV data
+  is converted to JSON for example.
+
+
 ## License
 
 (The MIT license)
