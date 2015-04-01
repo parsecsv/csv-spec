@@ -70,14 +70,14 @@ character used in any given input CSV-like formatted file/data.
 1.  Each record is located on a separate line, each line ending with a line
     break (CRLF). For example:
 
-    CSV:
+    _CSV:_
 
     ```csv
     aaa,bbb,ccc¬
     xxx,yyy,zzz¬
     ```
 
-    JSON:
+    _JSON:_
 
     ```json
     [ ["aaa", "bbb", "ccc"],
@@ -87,14 +87,14 @@ character used in any given input CSV-like formatted file/data.
 2.  Though recommended, the last record in a file is not required to have a
     ending line break. For example:
 
-    CSV:
+    _CSV:_
 
     ```csv
     aaa,bbb,ccc¬
     xxx,yyy,zzz
     ```
 
-    JSON:
+    _JSON:_
 
     ```json
     [ ["aaa", "bbb", "ccc"],
@@ -106,13 +106,15 @@ character used in any given input CSV-like formatted file/data.
     names corresponding to the fields in the file and should contain the same
     number of fields as the records in the rest of the file. For example:
 
+    _CSV:_
+
     ```csv
     field_1,field_2,field_3¬
     aaa,bbb,ccc¬
     xxx,yyy,zzz¬
     ```
 
-    JSON (ignoring headers):
+    _JSON (ignoring headers):_
 
     ```json
     [ ["field_1", "field_2", "field_3"],
@@ -120,7 +122,7 @@ character used in any given input CSV-like formatted file/data.
       ["xxx", "yyy", "zzz"] ]
     ```
 
-    JSON (using headers):
+    _JSON (using headers):_
 
     ```json
     [ {"field_1": "aaa", "field_2": "bbb", "field_3": "ccc"},
