@@ -67,7 +67,7 @@ character used in any given input CSV-like formatted file/data.
 
 ### Rules
 
-1.  Each record is located on a separate line, each line ending with a line
+1.  Each record starts at the beginning of its own line, and ends with a line
     break (CRLF). For example:
 
     CSV:
@@ -101,9 +101,9 @@ character used in any given input CSV-like formatted file/data.
       ["xxx", "yyy", "zzz"] ]
     ```
 
-3.  There maybe an optional header line appearing as the first line of the
-    file with the same format as normal record lines. This header will contain
-    names corresponding to the fields in the file and should contain the same
+3.  There may be an optional header line appearing as the first line of the
+    file with the same format as normal records. This header will contain
+    names corresponding to the fields in the file, and must contain the same
     number of fields as the records in the rest of the file. For example:
 
     CSV:
@@ -129,9 +129,9 @@ character used in any given input CSV-like formatted file/data.
       {"field_1": "xxx", "field_2": "yyy", "field_3": "zzz"} ]
     ```
 
-4.  Within each record and the header, there may be one or more fields,
-    separated by a delimiter (normally a comma). Each record should contain
-    the same number of fields throughout the file. For example:
+4.  Within each record and the optional header, there may be one or more
+    fields, separated by a delimiter (normally a comma). Each record should
+    contain the same number of fields throughout the file. For example:
 
     CSV (invalid):
 
@@ -193,9 +193,9 @@ character used in any given input CSV-like formatted file/data.
       ["xxx", "y, yy", "zzz"] ]
     ```
 
-8.  If double-quotes are used to enclose fields, then a double-quote appearing
-    inside a field must be escaped by preceding it with another double quote.
-    For example:
+8.  A double-quote appearing inside a field must be escaped by preceding it
+    with another double quote, and the field itself must be enclosed in double
+    quotes. For example:
 
     CSV:
 
@@ -228,10 +228,11 @@ character used in any given input CSV-like formatted file/data.
     ```
 
 10. All fields are always strings. CSV itself does not support type casting to
-    integers, floats, booleans, or anything else. If type casting is required,
-    it is be up to the developer using a specific CSV library to ensure types
-    are correctly dealt with. It is not the responsibility of the CSV
-    parsing/writing library itself. For example:
+    integers, floats, booleans, or anything else. It is not a CSV library's
+    responsibility to type cast input CSV data.
+
+    If type casting is required, it is be up to the developer using a specific
+    CSV library to ensure types are correctly dealt with. For example:
 
     Input JSON:
 
@@ -254,8 +255,12 @@ character used in any given input CSV-like formatted file/data.
       ["11", "false", "2.13", "bbb"] ]
     ```
 
-11. When rendering output CSV data, non-string types should be converted to a
-    string in such a way that minimal information is lost. For example:
+    At this point it is up to the developer themselves to type cast the above
+    output data from the CSV parser.
+
+11. However, when rendering type cast input data to CSV text, non-string
+    types should be converted to a string in such a way that minimal
+    information is lost. For example:
       - Integers and floats should simply be rendered as a string version
         of themselves.
       - Booleans `true` and `false` should be rendered as `true` and `false`
