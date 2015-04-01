@@ -63,15 +63,19 @@ character used in any given input CSV-like formatted file/data.
 
    CSV:
 
-        aaa,bbb,ccc¬
-        xxx,yyy,zzz¬
+   ```csv
+   aaa,bbb,ccc¬
+   xxx,yyy,zzz¬
+   ```
 
    JSON:
 
-        [
-          ["aaa", "bbb", "ccc"],
-          ["xxx", "yyy", "zzz"]
-        ]
+   ```json
+   [
+     ["aaa", "bbb", "ccc"],
+     ["xxx", "yyy", "zzz"]
+   ]
+   ```
 
 
 ## License
