@@ -55,10 +55,17 @@ character used in any given input CSV-like formatted file/data.
 - **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`).
 
 
-## Rules
+## CSV Format Definition
 
-_Where relevant examples include the CSV text version and the equivalent data
-in JSON format. Line breaks in the CSV examples are displayed as `¬`._
+- The rules are mostly based on the corresponding section from
+  [RFC 4180][def], with minor changes, clarifications and improved examples.
+- Where relevant, examples include both the CSV text version and the
+  equivalent data in JSON format.
+- Line breaks in the CSV examples are displayed as `¬`.
+
+[def]: http://tools.ietf.org/html/rfc4180#section-2
+
+### Rules
 
 1.  Each record is located on a separate line, each line ending with CRLF
     (`\r\n`). For example:
@@ -86,13 +93,41 @@ in JSON format. Line breaks in the CSV examples are displayed as `¬`._
     aaa,bbb,ccc¬
     xxx,yyy,zzz
     ```
-    
+
     JSON:
 
     ```json
     [ ["aaa", "bbb", "ccc"],
       ["xxx", "yyy", "zzz"] ]
     ```
+
+3.  There maybe an optional header line appearing as the first line of the
+    file with the same format as normal record lines. This header will contain
+    names corresponding to the fields in the file and should contain the same
+    number of fields as the records in the rest of the file. For example:
+
+    ```csv
+    field_1,field_2,field_3¬
+    aaa,bbb,ccc¬
+    xxx,yyy,zzz¬
+    ```
+
+    JSON (ignoring headers):
+
+    ```json
+    [ ["field_1", "field_2", "field_3"],
+      ["aaa", "bbb", "ccc"],
+      ["xxx", "yyy", "zzz"] ]
+    ```
+
+    JSON (using headers):
+
+    ```json
+    [ {"field_1": "aaa", "field_2": "bbb", "field_3": "ccc"},
+      {"field_1": "xxx", "field_2": "yyy", "field_3": "zzz"} ]
+    ```
+
+
 
 
 ## License
