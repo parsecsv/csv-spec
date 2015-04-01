@@ -42,10 +42,10 @@ character used in any given input CSV-like formatted file/data.
 
 ## Terminology
 
-- **Field** — A singular String value within a row.
-- **Record** (or **Row**) — A collection of fields.
-- **Column** — Fields from multiple rows at the same offset. For example the
-  second column would be a list of the second field from every row.
+- **Field** — A singular String value within a record.
+- **Record** (or **Row**) — A collection of fields. This is often referred to
+  as a "line", but a single record can in span multiple text lines if a field
+  within it contains one or more line breaks.
 - **Delimiter** — The character used to separate fields withing a
   row. Commonly this will be a comma (`,`), but semi-colons (`;`) or tabs
   (`\t`) are two other popular delimiter characters.
