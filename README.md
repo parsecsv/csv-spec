@@ -73,10 +73,8 @@ in JSON format. Line breaks in the CSV examples are displayed as `¬`._
     JSON:
 
     ```json
-    [
-      ["aaa", "bbb", "ccc"],
-      ["xxx", "yyy", "zzz"]
-    ]
+    [ ["aaa", "bbb", "ccc"],
+      ["xxx", "yyy", "zzz"] ]
     ```
 
 2.  Though recommended, the last record in a file is not required to have a
@@ -87,6 +85,13 @@ in JSON format. Line breaks in the CSV examples are displayed as `¬`._
     ```csv
     aaa,bbb,ccc¬
     xxx,yyy,zzz
+    ```
+    
+    JSON:
+
+    ```json
+    [ ["aaa", "bbb", "ccc"],
+      ["xxx", "yyy", "zzz"] ]
     ```
 
 
