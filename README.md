@@ -56,8 +56,22 @@ character used in any given input CSV-like formatted file/data.
   examples the `¬` character will be used to visually display line breaks.
 
 
+## Rules
 
+1. Each record is located on a separate line, each line ending with CRLF
+   (`\r\n`). For example:
 
+   CSV:
+
+        aaa,bbb,ccc¬
+        xxx,yyy,zzz¬
+
+   JSON:
+
+        [
+          ["aaa", "bbb", "ccc"],
+          ["xxx", "yyy", "zzz"]
+        ]
 
 
 ## License
