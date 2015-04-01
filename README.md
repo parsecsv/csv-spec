@@ -61,7 +61,7 @@ character used in any given input CSV-like formatted file/data.
   [RFC 4180][def], with minor changes, clarifications and improved examples.
 - Where relevant, examples include both the CSV text version and the
   equivalent data in JSON format.
-- Line breaks in the CSV examples are displayed as `¬`.
+- Line breaks in the CSV examples are displayed using the `¬` character.
 
 [def]: http://tools.ietf.org/html/rfc4180#section-2
 
@@ -70,31 +70,31 @@ character used in any given input CSV-like formatted file/data.
 1.  Each record is located on a separate line, each line ending with a line
     break (CRLF). For example:
 
-    _CSV:_
+    CSV:
 
     ```csv
     aaa,bbb,ccc¬
     xxx,yyy,zzz¬
     ```
 
-    _JSON:_
+    JSON:
 
     ```json
     [ ["aaa", "bbb", "ccc"],
       ["xxx", "yyy", "zzz"] ]
     ```
 
-2.  Though recommended, the last record in a file is not required to have a
-    ending line break. For example:
+2.  Though it is recommended, the last record in a file is not required to
+    have a ending line break. For example:
 
-    _CSV:_
+    CSV:
 
     ```csv
     aaa,bbb,ccc¬
     xxx,yyy,zzz
     ```
 
-    _JSON:_
+    JSON:
 
     ```json
     [ ["aaa", "bbb", "ccc"],
@@ -106,7 +106,7 @@ character used in any given input CSV-like formatted file/data.
     names corresponding to the fields in the file and should contain the same
     number of fields as the records in the rest of the file. For example:
 
-    _CSV:_
+    CSV:
 
     ```csv
     field_1,field_2,field_3¬
@@ -114,7 +114,7 @@ character used in any given input CSV-like formatted file/data.
     xxx,yyy,zzz¬
     ```
 
-    _JSON (ignoring headers):_
+    JSON (ignoring headers):
 
     ```json
     [ ["field_1", "field_2", "field_3"],
@@ -122,14 +122,146 @@ character used in any given input CSV-like formatted file/data.
       ["xxx", "yyy", "zzz"] ]
     ```
 
-    _JSON (using headers):_
+    JSON (using headers):
 
     ```json
     [ {"field_1": "aaa", "field_2": "bbb", "field_3": "ccc"},
       {"field_1": "xxx", "field_2": "yyy", "field_3": "zzz"} ]
     ```
 
+4.  Within each record and the header, there may be one or more fields,
+    separated by a delimiter (normally a comma). Each record should contain
+    the same number of fields throughout the file. For example:
 
+    CSV (invalid):
+
+    ```csv
+    aaa,bbb,ccc¬
+    111,222,333,444¬
+    xxx,yyy,zzz¬
+    ```
+
+5.  The last field in the record must not be followed by a comma. This results
+    in a additional field with nothing in it. For example:
+
+    CSV:
+
+    ```csv
+    aaa,bbb,ccc,¬
+    xxx,yyy,zzz,¬
+    ```
+
+    JSON:
+
+    ```json
+    [ ["aaa", "bbb", "ccc", ""],
+      ["xxx", "yyy", "zzz", ""] ]
+    ```
+
+6.  Spaces are considered part of a field and should not be ignored. For
+    example:
+
+    CSV:
+
+    ```csv
+    aaa ,  bbb , ccc¬
+     xxx, yyy  ,zzz ¬
+    ```
+
+    JSON:
+
+    ```json
+    [ ["aaa ", "  bbb ", " ccc"],
+      [" xxx", " yyy  ", "zzz "] ]
+    ```
+
+7.  Fields containing line breaks, double quotes, or the delimiter character
+    (normally a comma) must be enclosed in double-quotes. For example:
+
+    CSV:
+
+    ```csv
+    aaa,"b¬
+    bb",ccc¬
+    xxx,"y, yy",zzz¬
+    ```
+
+    JSON:
+
+    ```json
+    [ ["aaa", "b\r\nbb", "ccc"],
+      ["xxx", "y, yy", "zzz"] ]
+    ```
+
+8.  If double-quotes are used to enclose fields, then a double-quote appearing
+    inside a field must be escaped by preceding it with another double quote.
+    For example:
+
+    CSV:
+
+    ```csv
+    aaa,"b""bb",ccc¬
+    ```
+
+    JSON:
+
+    ```json
+    [ ["aaa", "b\"bb", "ccc"] ]
+    ```
+
+9.  Though it is not recommended, each field may be enclosed in double quotes
+    even if it does not contain a line break, double quote, or delimiter
+    character. For example:
+
+    CSV:
+
+    ```csv
+    "aaa","bbb","ccc"¬
+    "xxx",yyy,zzz¬
+    ```
+
+    JSON:
+
+    ```json
+    [ ["aaa", "bbb", "ccc"],
+      ["xxx", "yyy", "zzz"] ]
+    ```
+
+10. All fields are always strings. CSV itself does not support type casting to
+    integers, floats, booleans, or anything else. If type casting is required,
+    it is be up to the developer using a specific CSV library to ensure types
+    are correctly dealt with. It is not the responsibility of the CSV
+    parsing/writing library itself. For example:
+
+    Input JSON:
+
+    ```json
+    [ [10, true, 0.3, "aaa"],
+      [11, false, 2.13, "bbb"] ]
+    ```
+
+    Output CSV:
+
+    ```csv
+    10,true,0.3,aaa¬
+    11,false,2.13,bbb¬
+    ```
+
+    Output CSV parsed back to JSON:
+
+    ```json
+    [ ["10", "true", "0.3", "aaa"],
+      ["11", "false", "2.13", "bbb"] ]
+    ```
+
+11. When rendering output CSV data, non-string types should be converted to a
+    string in such a way that minimal information is lost. For example:
+      - Integers and floats should simply be rendered as a string version
+        of themselves.
+      - Booleans `true` and `false` should be rendered as `true` and `false`
+        strings, not as `1` or `0` numbers. If numbers are used the resulting
+        CSV data is indistinguishable from actual integer numbers.
+      - Null/Nil values should be rendered as empty strings.
 
 
 ## License
