@@ -68,7 +68,7 @@ character used in any given input CSV-like formatted file/data.
 ### Rules
 
 1.  Each record starts at the beginning of its own line, and ends with a line
-    break (CRLF). For example:
+    break (CRLF).
 
     CSV:
 
@@ -85,7 +85,7 @@ character used in any given input CSV-like formatted file/data.
     ```
 
 2.  Though it is recommended, the last record in a file is not required to
-    have a ending line break. For example:
+    have a ending line break.
 
     CSV:
 
@@ -104,7 +104,7 @@ character used in any given input CSV-like formatted file/data.
 3.  There may be an optional header line appearing as the first line of the
     file with the same format as normal records. This header will contain
     names corresponding to the fields in the file, and must contain the same
-    number of fields as the records in the rest of the file. For example:
+    number of fields as the records in the rest of the file.
 
     CSV:
 
@@ -131,7 +131,7 @@ character used in any given input CSV-like formatted file/data.
 
 4.  Within each record and the optional header, there may be one or more
     fields, separated by a delimiter (normally a comma). Each record should
-    contain the same number of fields throughout the file. For example:
+    contain the same number of fields throughout the file.
 
     CSV (invalid):
 
@@ -142,7 +142,7 @@ character used in any given input CSV-like formatted file/data.
     ```
 
 5.  The last field in the record must not be followed by a comma. This results
-    in a additional field with nothing in it. For example:
+    in a additional field with nothing in it.
 
     CSV:
 
@@ -176,7 +176,7 @@ character used in any given input CSV-like formatted file/data.
     ```
 
 7.  Fields containing line breaks, double quotes, or the delimiter character
-    (normally a comma) must be enclosed in double-quotes. For example:
+    (normally a comma) must be enclosed in double-quotes.
 
     CSV:
 
@@ -195,7 +195,7 @@ character used in any given input CSV-like formatted file/data.
 
 8.  A double-quote appearing inside a field must be escaped by preceding it
     with another double quote, and the field itself must be enclosed in double
-    quotes. For example:
+    quotes.
 
     CSV:
 
@@ -211,7 +211,7 @@ character used in any given input CSV-like formatted file/data.
 
 9.  Though it is not recommended, each field may be enclosed in double quotes
     even if it does not contain a line break, double quote, or delimiter
-    character. For example:
+    character.
 
     CSV:
 
@@ -232,7 +232,7 @@ character used in any given input CSV-like formatted file/data.
     responsibility to type cast input CSV data.
 
     If type casting is required, it is be up to the developer using a specific
-    CSV library to ensure types are correctly dealt with. For example:
+    CSV library to ensure types are correctly dealt with.
 
     Input JSON:
 
@@ -260,7 +260,7 @@ character used in any given input CSV-like formatted file/data.
 
 11. However, when rendering type cast input data to CSV text, non-string
     types should be converted to a string in such a way that minimal
-    information is lost. For example:
+    information is lost.
       - Integers and floats should simply be rendered as a string version
         of themselves.
       - Booleans `true` and `false` should be rendered as `true` and `false`
