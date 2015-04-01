@@ -3,19 +3,22 @@
 CSV is not a file format, it is typically a loose set of guidelines of how to
 structure tabular data into a plain text string. As such there's an endless
 amount of `*.csv` files floating around which are highly incompatible with
-each other. The closest thing there is to a specification is
-[RFC 4180](http://tools.ietf.org/html/rfc4180).
+each other. The closest thing there is to a specification is [RFC 4180][].
+
+[rfc 4180]: http://tools.ietf.org/html/rfc4180
 
 
 ## Goals
 
 This project is an attempt to summarize RFC 4180 and the information in the
-[Comma-separated values (CSV)](http://en.wikipedia.org/wiki/Comma-separated_values)
-Wikipedia article into a easy to understand format. The spec will also take
-into account that the comma (`,`) character is not the only character used as
-a field delimiter. Semi-colons (`;`), tabs (`\t`), and more are popular field
-delimiter characters. As such the specification will more accurately be
-describing a CSV-like structured data format.
+[Comma-separated values (CSV)][csv] Wikipedia article into a easy to
+understand format. The spec will also take into account that the comma (`,`)
+character is not the only character used as a field delimiter. Semi-colons
+(`;`), tabs (`\t`), and more are popular field delimiter characters. As such
+the specification will more accurately be describing a CSV-like structured
+data format.
+
+[csv]: http://en.wikipedia.org/wiki/Comma-separated_values
 
 We will also provide input/output test files that CSV parser/writer software
 libraries can use to validate if they properly adhere to the rules laid out in
@@ -40,15 +43,17 @@ character used in any given input CSV-like formatted file/data.
 ## Terminology
 
 - **Field** — A singular String value within a row.
-- **Row** (or **Record**) — A collection of fields.
+- **Record** (or **Row**) — A collection of fields.
 - **Column** — Fields from multiple rows at the same offset. For example the
   second column would be a list of the second field from every row.
 - **Delimiter** — The character used to separate fields withing a
   row. Commonly this will be a comma (`,`), but semi-colons (`;`) or tabs
   (`\t`) are two other popular delimiter characters.
 - **Header** — The first row is often used to contain the column names for all
-  remaining rows. Header names would be used as key names during when CSV data
-  is converted to JSON for example.
+  remaining rows. Header names would be used as key names when CSV data is
+  converted to JSON for example.
+- **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`). In
+  examples the `¬` character will be used to visually display line breaks.
 
 
 
