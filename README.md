@@ -57,7 +57,7 @@ character used in any given input CSV-like formatted file/data.
 
 ## CSV Format Definition
 
-- The rules are mostly based on the corresponding section from
+- These rules are mostly based on the corresponding section from
   [RFC 4180][def], with minor changes, clarifications and improved examples.
 - Where relevant, examples include both the CSV text version and the
   equivalent data in JSON format.
@@ -67,8 +67,8 @@ character used in any given input CSV-like formatted file/data.
 
 ### Rules
 
-1.  Each record is located on a separate line, each line ending with CRLF
-    (`\r\n`). For example:
+1.  Each **record** is located on a separate line, each line ending with a
+    **line break** (CRLF or `\r\n`). For example:
 
     CSV:
 
@@ -85,7 +85,7 @@ character used in any given input CSV-like formatted file/data.
     ```
 
 2.  Though recommended, the last record in a file is not required to have a
-    ending line break. For example:
+    ending **line break**. For example:
 
     CSV:
 
@@ -101,10 +101,11 @@ character used in any given input CSV-like formatted file/data.
       ["xxx", "yyy", "zzz"] ]
     ```
 
-3.  There maybe an optional header line appearing as the first line of the
-    file with the same format as normal record lines. This header will contain
-    names corresponding to the fields in the file and should contain the same
-    number of fields as the records in the rest of the file. For example:
+3.  There maybe an optional **header** line appearing as the first line of the
+    file with the same format as normal **record** lines. This **header** will
+    contain names corresponding to the **fields** in the file and should
+    contain the same number of **fields** as the **records** in the rest of
+    the file. For example:
 
     ```csv
     field_1,field_2,field_3¬
