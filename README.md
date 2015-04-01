@@ -29,7 +29,7 @@ character used in any given input CSV-like formatted file/data.
 
 ## Roadmap
 
-1. Write up core specification rules. _[in-progress]_
+1. Write up core specification rules. _[in-progress - 1st draft]_
 2. Create input/output test files covering all rules in the specification.
 3. Create website for [csv-spec.org](http://csv-spec.org/).
 4. Create linting tool as a NPM module, allowing easy validation of CSV
