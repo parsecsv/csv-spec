@@ -232,7 +232,7 @@ character used in any given input CSV-like formatted file/data.
     integers, floats, booleans, or anything else. It is not a CSV library's
     responsibility to type cast input CSV data.
 
-    If type casting is required, it is be up to the developer using a specific
+    If type casting is required, it is up to the developer using a specific
     CSV library to ensure types are correctly dealt with.
 
     Input JSON:
