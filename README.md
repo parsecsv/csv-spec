@@ -238,22 +238,22 @@ character used in any given input CSV-like formatted file/data.
     Input JSON:
 
     ```json
-    [ [10, true, 0.3, "aaa"],
-      [11, false, 2.13, "bbb"] ]
+    [ [10, true, 0.3, null, "aaa"],
+      [11, false, 2.13, "", "bbb"] ]
     ```
 
     Output CSV:
 
     ```csv
-    10,true,0.3,aaa¬
-    11,false,2.13,bbb¬
+    10,true,0.3,,aaa¬
+    11,false,2.13,,bbb¬
     ```
 
     Output CSV parsed back to JSON:
 
     ```json
-    [ ["10", "true", "0.3", "aaa"],
-      ["11", "false", "2.13", "bbb"] ]
+    [ ["10", "true", "0.3", "", "aaa"],
+      ["11", "false", "2.13", "", "bbb"] ]
     ```
 
     At this point it is up to the developer themselves to type cast the above
