@@ -52,30 +52,42 @@ character used in any given input CSV-like formatted file/data.
 - **Header** — The first row is often used to contain the column names for all
   remaining rows. Header names would be used as key names when CSV data is
   converted to JSON for example.
-- **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`). In
-  examples the `¬` character will be used to visually display line breaks.
+- **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`).
 
 
 ## Rules
 
-1. Each record is located on a separate line, each line ending with CRLF
-   (`\r\n`). For example:
+_Where relevant examples include the CSV text version and the equivalent data
+in JSON format. Line breaks in the CSV examples are displayed as `¬`._
 
-   CSV:
+1.  Each record is located on a separate line, each line ending with CRLF
+    (`\r\n`). For example:
 
-   ```csv
-   aaa,bbb,ccc¬
-   xxx,yyy,zzz¬
-   ```
+    CSV:
 
-   JSON:
+    ```csv
+    aaa,bbb,ccc¬
+    xxx,yyy,zzz¬
+    ```
 
-   ```json
-   [
-     ["aaa", "bbb", "ccc"],
-     ["xxx", "yyy", "zzz"]
-   ]
-   ```
+    JSON:
+
+    ```json
+    [
+      ["aaa", "bbb", "ccc"],
+      ["xxx", "yyy", "zzz"]
+    ]
+    ```
+
+2.  Though recommended, the last record in a file is not required to have a
+    ending line break. For example:
+
+    CSV:
+
+    ```csv
+    aaa,bbb,ccc¬
+    xxx,yyy,zzz
+    ```
 
 
 ## License
