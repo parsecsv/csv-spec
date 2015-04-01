@@ -53,7 +53,8 @@ character used in any given input CSV-like formatted file/data.
   remaining rows. Header names would be used as key names when CSV data is
   converted to JSON for example.
 - **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`).
-
+- **CRLF** — Means the standard line break used by Windows. It is a carriage
+  return character (CR or `\r`) and a line feed character (LF or `\n`).
 
 ## CSV Format Definition
 
@@ -175,8 +176,8 @@ character used in any given input CSV-like formatted file/data.
       [" xxx", " yyy  ", "zzz "] ]
     ```
 
-7.  Fields containing line breaks, double quotes, or the delimiter character
-    (normally a comma) must be enclosed in double-quotes.
+7.  Fields containing line breaks (CRLF, LF, or CR), double quotes, or the
+    delimiter character (normally a comma) must be enclosed in double-quotes.
 
     CSV:
 
