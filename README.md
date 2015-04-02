@@ -52,9 +52,12 @@ character used in any given input CSV-like formatted file/data.
 - **Header** — The first row is often used to contain the column names for all
   remaining rows. Header names would be used as key names when CSV data is
   converted to JSON for example.
-- **Line Break** — Line breaks in CSV files should be CRLF (`\r\n`).
-- **CRLF** — Means the standard line break used by Windows. It is a carriage
-  return character (CR or `\r`) and a line feed character (LF or `\n`).
+- **Line Break** — Line breaks in CSV files can be CRLF (`\r\n`), LF (`\n`),
+  and even in rare cases CR (`\r`).
+- **LF, CR, and CRLF** — Different types of line breaks, typically determined
+  by the OS. Linux, OSX, and other *NIX operating systems generally use a line
+  feed (LF or `\n`) character. Windows uses a carriage return (CR or `\r`) and
+  a line feed character, effectively "CRLF" (`\r\n`).
 
 ## CSV Format Definition
 
@@ -69,7 +72,7 @@ character used in any given input CSV-like formatted file/data.
 ### Rules
 
 1.  Each record starts at the beginning of its own line, and ends with a line
-    break (CRLF).
+    break (shown as `¬`).
 
     CSV:
 
@@ -268,6 +271,10 @@ character used in any given input CSV-like formatted file/data.
         strings, not as `1` or `0` numbers. If numbers are used the resulting
         CSV data is indistinguishable from actual integer numbers.
       - Null/Nil values should be rendered as empty strings.
+
+12. All forms of line breaks (CRLF, LF, and CR) should be supported when
+    parsing input CSV data. When rendering output CSV data, CRLF should be
+    used for line breaks to ensure maximum cross-platform compatibility.
 
 
 ## License
