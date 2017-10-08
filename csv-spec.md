@@ -32,8 +32,8 @@ Roadmap
 -------
 
 1. Write up core specification rules. _[in-progress]_
-2. Create input/output test files covering all rules in the specification.
-3. Create website for [csv-spec.org](http://csv-spec.org/).
+2. ~Create website for [csv-spec.org](http://csv-spec.org/).~ _**[done]**_
+3. Create input/output test files covering all rules in the specification.
 4. Create linting tool as a NPM module, allowing easy validation of CSV data
    both client-side in a web browser, and server side via a command line tool.
 5. Create automatic delimiter character detection code snippets in various
@@ -56,9 +56,9 @@ Terminology
 - **Line Break** — Line breaks in CSV files can be CRLF (`\r\n`), LF (`\n`), and
   even in rare cases CR (`\r`).
 - **LF, CR, and CRLF** — Different types of line breaks, typically determined by
-  the OS. Linux, OSX, and other *NIX operating systems generally use a line feed
-  (LF or `\n`) character. Windows uses a carriage return (CR or `\r`) and a line
-  feed character, effectively "CRLF" (`\r\n`).
+  the OS. Linux, macOS, and other *NIX operating systems generally use a line
+  feed (LF or `\n`) character. Windows uses a carriage return (CR or `\r`) and a
+  line feed character, effectively "CRLF" (`\r\n`).
 
 CSV Format Specification
 ------------------------
@@ -290,6 +290,7 @@ clarifications and improved examples.
 
 13. When parsing input CSV data all forms of line breaks (CRLF, LF, and CR) MUST
     be supported.
+
 14. When rendering output CSV data, CRLF MUST be used for line breaks to ensure
     maximum cross-platform compatibility.
 
