@@ -293,6 +293,14 @@ clarifications and improved examples.
 14. When rendering output CSV data, CRLF MUST be used for line breaks to ensure
     maximum cross-platform compatibility.
 
+About
+-----
+
+This CSV specification is authored by [Jim Myhrberg](https://jimeh.me/).
+
+If you'd like to leave feedback,
+please [open an issue on GitHub](https://github.com/parsecsv/csv-spec/issues).
+
 License
 -------
 
