@@ -47,7 +47,7 @@ Terminology
 - **Record** (or **Row**) — A collection of fields. This is often referred to as
   a "line", but a single record can span multiple text lines if a field within
   it contains one or more line breaks.
-- **Delimiter** — The character used to separate fields withing a row. Commonly
+- **Delimiter** — The character used to separate fields within a row. Commonly
   this will be a comma (`,`), but semi-colons (`;`) or tabs (`\t`) are two other
   popular delimiter characters.
 - **Header** — The first row is often used to contain the column names for all
